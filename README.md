@@ -1,16 +1,34 @@
-# timer
+# Timer Application
+I made this application just to learn bloc statemanagement in Flutter.
 
-A new Flutter project.
+Other than learning bloc state-managment, I also learned how to make paths in Flutter.
 
-## Getting Started
+I also learned how easy it is to generate a random color in Flutter.
 
-This project is a starting point for a Flutter application.
+P.S.
+```
+Color.fromARGB(
+      255, Random().nextInt(255), Random().nextInt(255), Random().nextInt(255))
+```
 
-A few resources to get you started if this is your first Flutter project:
+That's how I generated a random color.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+That's it.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+I'm looking forward to add some features to this application.
+such as:
+- Adding a timer to the application.
+
+Because right now, the application is using a static timer.
+
+Here's some images of the application:
+
+<div style="display: grid; grid-template-columns: repeat(2,minmax(0, 1fr)); gap: 1rem;">
+    <img src="./flutter_01.png" alt="">
+    <img src="./flutter_02.png" alt="">
+    <img src="./flutter_03.png" alt="">
+    <img src="./flutter_04.png" alt="">
+    <img src="./flutter_05.png" alt="">
+    <img src="./flutter_06.png" alt="">
+    <img src="./flutter_07.png" alt="">
+</div>
