@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Background extends StatelessWidget {
-  const Background({Key? key}) : super(key: key);
+class Background extends StatefulWidget {
+  Background({Key? key}) : super(key: key);
+
+  @override
+  State<Background> createState() => _BackgroundState();
+}
+
+class _BackgroundState extends State<Background> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,5 +22,34 @@ class Background extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class MyAnimation extends StatefulWidget {
+  const MyAnimation({Key? key}) : super(key: key);
+
+  @override
+  _MyAnimationState createState() => _MyAnimationState();
+}
+
+class _MyAnimationState extends State<MyAnimation>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(vsync: this);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }
