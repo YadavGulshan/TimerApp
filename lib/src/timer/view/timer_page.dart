@@ -4,7 +4,7 @@ import 'package:timer/src/ticker.dart';
 import 'package:timer/src/timer/timer.dart';
 
 import 'actions.dart';
-import 'background.dart';
+import 'animation/animation.dart';
 
 class TimerPage extends StatelessWidget {
   const TimerPage({Key? key}) : super(key: key);
@@ -15,6 +15,7 @@ class TimerPage extends StatelessWidget {
       create: (_) => TimerBloc(ticker: const Ticker()),
       child: const TimerView(),
     );
+    // return const MyWaveAnimation();
   }
 }
 
@@ -24,12 +25,10 @@ class TimerView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Flutter Timer'),
-      ),
       body: Stack(
         children: [
-          Background(),
+          // Background(),
+          const MyWaveAnimation(),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
