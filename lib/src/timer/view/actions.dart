@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:timer/src/timer/timer.dart';
 
-class ActionButton extends StatelessWidget {
-  const ActionButton({Key? key}) : super(key: key);
+class Actions extends StatelessWidget {
+  const Actions({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +15,11 @@ class ActionButton extends StatelessWidget {
             if (state is TimerInitial) ...[
               FloatingActionButton(
                   child: const Icon(Icons.play_arrow),
-                  onPressed: () => context
-                      .read<TimerBloc>()
-                      .add(TimerStarted(state.duration)))
+                  onPressed: () {
+                    context
+                        .read<TimerBloc>()
+                        .add(TimerStarted(duration: state.duration));
+                  })
             ],
             if (state is TimerRunInProgress) ...[
               FloatingActionButton(

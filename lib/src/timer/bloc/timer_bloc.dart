@@ -9,19 +9,17 @@ part 'timer_state.dart';
 
 class TimerBloc extends Bloc<TimerEvent, TimerState> {
   final Ticker _ticker;
-  static const int _duration = 60;
+  static const int _duration = 2500;
 
   StreamSubscription<int>? _tickerSubscription;
   TimerBloc({required Ticker ticker})
       : _ticker = ticker,
         super(const TimerInitial(_duration)) {
-    on<TimerEvent>((event, emit) {
-      _onStarted;
-      _onPaused;
-      _onResumed;
-      _onReset;
-      _onTicked;
-    });
+    on<TimerStarted>(_onStarted);
+    on<TimerPaused>(_onPaused);
+    on<TimerResumed>(_onResumed);
+    on<TimerReset>(_onReset);
+    on<TimerTicked>(_onTicked);
   }
 
   @override
@@ -35,24 +33,24 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
     _tickerSubscription?.cancel();
     _tickerSubscription = _ticker
         .tick(ticks: event.duration)
-        .listen((event) => add(TimerTicked(event)));
+        .listen((event) => add(TimerTicked(duration: event)));
   }
 
-  void _onPaused(TimerTicked event, Emitter<TimerState> emit) {
+  void _onPaused(TimerPaused event, Emitter<TimerState> emit) {
     if (state is TimerRunInProgress) {
       _tickerSubscription?.pause();
       emit(TimerRunPause(state.duration));
     }
   }
 
-  void _onResumed(TimerTicked event, Emitter<TimerState> emit) {
+  void _onResumed(TimerResumed event, Emitter<TimerState> emit) {
     if (state is TimerRunPause) {
       _tickerSubscription?.resume();
       emit(TimerRunInProgress(state.duration));
     }
   }
 
-  void _onReset(TimerTicked event, Emitter<TimerState> emit) {
+  void _onReset(TimerReset event, Emitter<TimerState> emit) {
     _tickerSubscription?.cancel();
     emit(const TimerInitial(_duration));
   }
