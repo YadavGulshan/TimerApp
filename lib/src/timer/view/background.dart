@@ -6,12 +6,14 @@ class Background extends AnimatedWidget {
   final Animation<double> animation;
   Background(this.animation, {Key? key})
       : super(listenable: animation, key: key);
-  final Color backgroundColor = getRandomColor();
+  // final Color backgroundColor = getRandomColor();
+  final Color backgroundColor = Colors.blue;
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         Positioned(
+          bottom: 0,
           right: animation.value,
           child: ClipPath(
             clipper: Wave(),
@@ -32,6 +34,7 @@ class Background extends AnimatedWidget {
           ),
         ),
         Positioned(
+          bottom: 0,
           left: animation.value,
           child: ClipPath(
             clipper: Wave(),
